@@ -1,6 +1,10 @@
 # challenge-amigo-secreto
 Desafío para Oracle Next Education 
+
+
 Aplicación web funcional para Amigo Secreto
+
+
 Introduzca los nombres
 ![Captura de pantalla 2025-03-18 174029](https://github.com/user-attachments/assets/1b970028-59a1-4362-bef0-cc78a559e7c8)
 Se agregaran a la lista
