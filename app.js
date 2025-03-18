@@ -6,40 +6,42 @@ function agregarAmigo() {
     let inputAmigo = document.getElementById('amigo');
     let nombreAmigo = inputAmigo.value.trim();
     
-    // Validar que no esté vacío
+    
+    // Vemos que no esté vacío
     if (nombreAmigo === '') {
-        alert('Por favor, ingresa un nombre válido.');
+        alert('Por favor, inserte un nombre.');
         return;
     }
     
     // Agregar el nombre al array
     amigos.push(nombreAmigo);
     
-    // Actualizar la lista visible
-    actualizarListaAmigos();
+    // Llamar a la función para mostrar los amigos
+    mostrarAmigos();
     
-    // Limpiar el campo de entrada y darle foco
+    // Limpiar el campo de entrada
     inputAmigo.value = '';
     inputAmigo.focus();
     
     // Limpiar el resultado anterior si existe
     document.getElementById('resultado').innerHTML = '';
-}
 
-// Función para actualizar la lista de amigos en el HTML
-function actualizarListaAmigos() {
-    let listaAmigos = document.getElementById('listaAmigos');
+}
+// Función para mostrar los amigos en la lista HTML
+function mostrarAmigos() {
+
+    let lista = document.getElementById('listaAmigos');
     
-    // Limpiar la lista actual
-    listaAmigos.innerHTML = '';
+
+    lista.innerHTML = "";
     
-    // Agregar cada amigo como un elemento de lista
-    amigos.forEach(amigo => {
+    for (let i = 0; i < amigos.length; i++) {
+     
         let li = document.createElement('li');
-        li.textContent = amigo;
-        li.className = 'name-item'; 
-        listaAmigos.appendChild(li);
-    });
+        li.textContent = amigos[i];
+        li.className = 'name-item';
+        lista.appendChild(li);
+    }
 }
 
 // Función para sortear un amigo aleatorio
@@ -50,30 +52,25 @@ function sortearAmigo() {
         return;
     }
     
-    // Seleccionar un nombre aleatorio
+    // 2. Generar un índice aleatorio
     let indiceAleatorio = Math.floor(Math.random() * amigos.length);
+    
+    // 3. Obtener el nombre sorteado
     let amigoSeleccionado = amigos[indiceAleatorio];
     
-    // Mostrar el resultado
-    let resultadoList = document.getElementById('resultado');
-    resultadoList.innerHTML = ''; 
+    // 4. Mostrar el resultado
+    let resultadoElement = document.getElementById('resultado');
+    resultadoElement.innerHTML = `
+        <li class="result-item">
+            <h3 class="result-title">¡Tu amigo secreto es!</h3>
+            <p class="result-name">${amigoSeleccionado}</p>
+        </li>
+    `;
     
-    let resultItem = document.createElement('li');
-    resultItem.className = 'result-item';
-    
-    let resultTitle = document.createElement('h3');
-    resultTitle.textContent = '¡Tu amigo secreto es!';
-    resultTitle.className = 'result-title';
-    
-    let resultName = document.createElement('p');
-    resultName.textContent = amigoSeleccionado;
-    resultName.className = 'result-name';
-   
-    resultItem.appendChild(resultTitle);
-    resultItem.appendChild(resultName);
-    resultadoList.appendChild(resultItem);
-    
+
 }
+
+    
 
 
 
